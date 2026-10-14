@@ -1,0 +1,46 @@
+# Render Blueprint — AI-bolat (бір web service, Docker).
+# Ескерту: Render (Frankfurt) — ҚР дербес деректер локализациясы талабына байланысты нақты оқушы деректері үшін ҚР-дағы VPS ұсынылады; бұл — фестиваль/демо нұсқасы.
+services:
+  - type: web
+    name: ai-bolat
+    runtime: docker
+    plan: starter            # persistent disk тек ақылы жоспарда ($7/ай). Free жоспарда disk жоқ — деректер әр рестартта өшеді.
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /healthz
+    autoDeploy: false
+    disk:
+      name: ai-bolat-data
+      mountPath: /var/data   # SQLite: /var/data/aibolat.db (+ backups/, bolat-images/, secret.key)
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: DATA_DIR
+        value: /var/data
+      - key: TRUST_PROXY
+        value: "1"
+      - key: PUBLIC_URL
+        value: https://ai-bolat.onrender.com
+      - key: DATA_LOCATION
+        value: eu
+      - key: APP_SECRET
+        generateValue: true
+      - key: ADMIN_SETUP_TOKEN
+        generateValue: true
+      # SMS сынақ режимі: провайдер жоқ, код экранда көрсетіледі
+      - key: ALLOW_DEV_SMS
+        value: "1"
+      - key: SEED_DEMO
+        value: "1"
+      # AI кілті — Render Dashboard-та қолмен енгізіледі (бос қалса, AI көмекші өшірулі)
+      - key: AI_API_KEY
+        sync: false
+      - key: AI_BASE_URL
+        sync: false
+      - key: AI_MODEL
+        sync: false
+      - key: CONTACT_EMAIL
+        sync: false

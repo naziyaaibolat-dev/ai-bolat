@@ -1,0 +1,8 @@
+# DOMAIN = .env ішіндегі домен (мысалы aibolat.kz). www → негізгі доменге бағытталады.
+{$DOMAIN} {
+	encode zstd gzip
+	reverse_proxy app:8790
+}
+www.{$DOMAIN} {
+	redir https://{$DOMAIN}{uri} permanent
+}

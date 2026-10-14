@@ -1,0 +1,87 @@
+/* ===== AI-bolat v4.0 — «Аспан мен Алтын»: таза, жылдам, мобильді-бірінші дизайн ===== */
+:root{
+  --bg:#070d17; --bg2:#0c1422; --surf:#0f1826; --surf2:#142033; --surf3:#1a283e;
+  --ink:#eaf1fa; --ink2:#a8b8cc; --muted:#7d8ea4; --line:rgba(150,190,235,.11); --line2:rgba(150,190,235,.2);
+  --a1:#29C5F6; --a2:#5b8cff; --a3:#F5B82E; --sky:#29C5F6; --ok:#2bd17e; --bad:#ff5a6a; --warn:#f6a623;
+  --grad:linear-gradient(135deg,#29C5F6 0%,#5b8cff 100%); --gold:linear-gradient(135deg,#FFE07A,#F5B82E 55%,#e8962e);
+  --r:20px; --r2:13px; --ease:cubic-bezier(.2,.8,.2,1);
+  --shadow:0 1px 0 rgba(255,255,255,.04) inset,0 12px 32px -20px rgba(0,0,0,.8);
+  --ring:0 0 0 3px rgba(41,197,246,.35);
+  --font:"Inter","Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",sans-serif;
+}
+:root.light{--bg:#f5f7fb;--bg2:#eef2f8;--surf:#fff;--surf2:#f8fafd;--surf3:#eef3f9;--ink:#0f1b2d;--ink2:#3f5068;--muted:#6f7e93;--line:rgba(15,27,45,.08);--line2:rgba(15,27,45,.15);--a1:#0A7FC2;--shadow:0 1px 2px rgba(15,27,45,.04),0 10px 30px -18px rgba(15,27,45,.25)}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%} body{font-feature-settings:"cv11","ss01";letter-spacing:-.005em}
+h1{letter-spacing:-.02em} h2{letter-spacing:-.01em}
+.aurora{background:radial-gradient(1100px 600px at 100% -10%,rgba(41,197,246,.16),transparent 60%),radial-gradient(900px 600px at -10% 110%,rgba(245,184,46,.08),transparent 60%),var(--bg)!important}
+.aurora i{opacity:.12!important;animation-duration:40s!important} .ornament{opacity:.025!important}
+/* картталар: жеңіл көтерілу */
+.card{border-radius:var(--r);transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s}
+.card.hov:hover,a.card:hover{transform:translateY(-2px);border-color:var(--line2)}
+.btn{transition:transform .15s var(--ease),filter .15s,background .2s} .btn:active{transform:scale(.97)}
+/* бет ауысу анимациясы */
+#view>.page{animation:pg4 .35s var(--ease) both} @keyframes pg4{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.ins4,.ov4,.dl4box,.media4,.quick4{animation:pg4 .45s var(--ease) both}
+/* қолжетімділік */
+:focus-visible{outline:none;box-shadow:var(--ring)!important;border-radius:10px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
+.skip4{position:fixed;left:12px;top:-60px;z-index:9999;background:var(--sky);color:#04121f!important;padding:10px 16px;border-radius:10px;font-weight:800;transition:top .2s}
+.skip4:focus{top:12px}
+#view:focus{outline:none}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}.aurora i{display:none}}
+@media (forced-colors:active){.card,.btn{border:1px solid CanvasText}}
+/* тайлдар */
+.tiles4{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.tile4{background:var(--surf2);border:1px solid var(--line);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.tile4>span{font-size:20px} .tile4 b{font-size:24px;font-weight:900;line-height:1.1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tile4 small{color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .tile4.warn b{background:var(--gold);-webkit-background-clip:text;background-clip:text}
+/* жылу картасы */
+.heat4{display:grid;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;gap:3px;justify-content:start;overflow-x:auto;padding-bottom:4px}
+.heat4 i,.heatleg i{width:13px;height:13px;border-radius:3px;background:var(--surf3);display:inline-block} .heat4 i.pad{visibility:hidden}
+.heat4 i.l1,.heatleg i.l1{background:rgba(41,197,246,.3)} .heat4 i.l2,.heatleg i.l2{background:rgba(41,197,246,.55)} .heat4 i.l3,.heatleg i.l3{background:rgba(41,197,246,.8)} .heat4 i.l4,.heatleg i.l4{background:var(--a3)}
+.heatleg{display:flex;align-items:center;gap:3px;margin-top:6px} .heatleg i{width:10px;height:10px}
+/* меңгеру */
+.mast4{display:flex;flex-direction:column;gap:10px} .mrow{display:flex;gap:10px;align-items:center} .mrow .mi{font-size:22px;width:34px;text-align:center}
+.mbar{display:block;height:8px;border-radius:99px;background:var(--surf3);overflow:hidden;margin-top:4px} .mbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--c),var(--sky));transition:width 1s var(--ease)}
+.trend4{width:100%;height:auto;max-height:160px} .trend4 .ln{fill:none;stroke:var(--sky);stroke-width:2.5;stroke-linejoin:round} .trend4 circle{fill:var(--a3)} .trend4 .ref{stroke:var(--line2);stroke-dasharray:4 4}
+.goal4{margin-top:10px;align-items:center;gap:8px}
+/* дедлайндар */
+.dl4.st-overdue{border-color:rgba(255,90,106,.5)} .dl4.st-soon{border-color:rgba(246,166,35,.5)} .dl4box h2{margin-top:0}
+/* мұғалім */
+.ovc{background:var(--surf2);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.kpis4{display:grid;grid-template-columns:repeat(4,1fr);gap:6px} .kpis4 span{display:flex;flex-direction:column;align-items:flex-start} .kpis4 b{font-size:20px} .kpis4 small{font-size:11px;color:var(--muted)} .kpis4 .warn b{color:var(--warn)}
+.asg4{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--surf2);display:flex;flex-direction:column;gap:8px} .asg4.over{border-left:4px solid var(--bad)}
+.big4{font-size:22px;font-weight:900}
+.stackbar{display:flex;height:10px;border-radius:99px;overflow:hidden;background:var(--surf3)} .stackbar i{display:block;height:100%} .stackbar .ok{background:var(--ok)} .stackbar .late{background:var(--warn)} .stackbar .miss{background:var(--surf3)}
+.rep4 tr.risk td{background:rgba(246,166,35,.08)} .rep4 td,.rep4 th{white-space:nowrap}
+.ann.pin4{border-color:var(--a3);box-shadow:inset 3px 0 0 var(--a3)}
+/* медиа */
+.mgrid4{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin:8px 0}
+.mslot{margin:0;position:relative} .mslot iframe,.mslot .facade{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;display:block}
+.mslot .facade{cursor:pointer;background:radial-gradient(circle at 30% 30%,rgba(41,197,246,.35),transparent 60%),linear-gradient(135deg,#0d2340,#06264A);color:#fff;display:grid;place-items:center;position:relative}
+.mslot .facade .pl{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:26px;backdrop-filter:blur(4px);transition:transform .2s var(--ease)} .mslot .facade:hover .pl{transform:scale(1.1)}
+.mslot .facade .mk{position:absolute;left:12px;bottom:10px;font-size:12px;font-weight:700;opacity:.8} .mslot figcaption{font-size:14px;margin-top:6px;color:var(--ink2)} .mslot .mdel{position:absolute;top:6px;right:6px}
+.madd{gap:8px;flex-wrap:wrap} .madd .in{min-width:0}
+/* жылдам тексеру */
+.quick4 summary{cursor:pointer;list-style:none} .quick4 summary::-webkit-details-marker{display:none} .quick4 summary::before{content:'▸ ';color:var(--sky)} .quick4 details[open] summary::before{content:'▾ '}
+.qq4{border:1px solid var(--line);border-radius:12px;padding:10px 12px} .qopts{gap:6px;flex-wrap:wrap;margin-top:6px}
+.qo.good{background:rgba(43,209,126,.2);border-color:var(--ok)} .qo.bad{background:rgba(255,90,106,.18);border-color:var(--bad)} .qfb{margin-top:6px}
+/* Болат: көмек деңгейі + микрофон */
+.hintlv{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:6px 12px 0}
+.hintlv .hl{border:1px solid var(--line2);background:transparent;border-radius:99px;padding:4px 10px;font-size:13px;cursor:pointer;color:var(--ink2)}
+.hintlv .hl.on{background:var(--grad);color:#04121f;border-color:transparent;font-weight:700}
+.iconbtn.mic.rec{background:var(--bad);color:#fff;animation:pulse4 1.2s infinite} @keyframes pulse4{0%{box-shadow:0 0 0 0 rgba(255,90,106,.6)}100%{box-shadow:0 0 0 14px rgba(255,90,106,0)}}
+/* офлайн / жаңарту */
+#net4,#upd4{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom));z-index:9000;background:#2a1a00;color:#ffd58a;border:1px solid #6b4a10;padding:10px 16px;border-radius:99px;font-weight:700;font-size:14px;box-shadow:var(--shadow);animation:pg4 .3s var(--ease)}
+#net4.ok{background:#05301c;color:#8ff0bf;border-color:#13603a} #upd4{background:var(--surf2);color:var(--ink);border-color:var(--line2);display:flex;gap:10px;align-items:center}
+/* мобильді-бірінші */
+@media (max-width:900px){.tiles4{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){
+  .tiles4{grid-template-columns:repeat(2,minmax(0,1fr))} .tile4 b{font-size:20px}
+  .kpis4{grid-template-columns:repeat(2,1fr)}
+  .tabbar{backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);padding-bottom:env(safe-area-inset-bottom)}
+  .tabbar a{min-height:52px} .btn{min-height:42px} .hero h1{font-size:24px}
+  .heat4 i{width:11px;height:11px}
+  .hero img[src*="bolat.svg"]{display:none} .hero .row{gap:14px!important}
+  .page{padding-bottom:calc(90px + env(safe-area-inset-bottom))}
+}
+@media print{.side,.top,.tabbar,.aurora,.ornament,#net4,.skip4{display:none!important}.main{margin:0!important}}
